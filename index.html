@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJM Digital - IT & Digital Solutions</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    :root { --primary-color: #00d4ff; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 70px; /* offset for fixed navbar */
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0d1117;
+      color: #d1d5db;
+      line-height: 1.6;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0,212,255,0.5) transparent;
+    }
+
+    body::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #111827cc;
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 4rem 1rem 2rem;
+      z-index: 1000;
+      border-bottom: 1px solid #1f2937;
+    }
+    nav h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: #d1d5db;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover { color: var(--primary-color); }
+
+    /* Hero */
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 1rem 100px;
+      background: linear-gradient(135deg, #0d1117 0%, #111827 100%);
+      position: relative;
+    }
+    header h2 { font-size: 3rem; font-weight: 700; margin: 0 0 1rem; color: var(--primary-color); }
+    header p { font-size: 1.25rem; color: #9ca3af; max-width: 600px; margin: 0 0 2rem; }
+    header a.cta {
+      padding: 0.8rem 2rem; font-size: 1rem; font-weight: 600;
+      color: #fff; background: var(--primary-color); border-radius: 6px;
+      transition: background 0.3s;
+    }
+    header a.cta:hover { background: #00aacc; }
+
+    /* Sections */
+    section { padding: 6rem 2rem; max-width: 1200px; margin: auto; }
+    h2.section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 3rem; color: #fff; }
+
+    /* Services */
+    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .card {
+      background: #1f2937; border: 1px solid #2d3748; border-radius: 10px; padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,212,255,0.25); }
+    .card h3 { color: var(--primary-color); margin-bottom: 1rem; }
+    .card p { color: #9ca3af; margin-bottom: 1rem; }
+    .card ul { margin: 0; padding-left: 1.2rem; color: #9ca3af; }
+    .card ul li { margin-bottom: 0.5rem; }
+
+    /* About */
+    .about { max-width: 900px; margin: auto; color: #9ca3af; }
+    .about h3 { color: var(--primary-color); margin-top: 2rem; }
+    .about p { margin-bottom: 1rem; }
+
+    /* Contact */
+    .contact { max-width: 800px; margin: auto; text-align: center; }
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .contact-card {
+      background: #1f2937; border: 1px solid #2d3748; padding: 1.5rem; border-radius: 10px;
+    }
+    .contact-card h3 { color: var(--primary-color); margin-bottom: 0.5rem; }
+    .contact-card p a { color: var(--primary-color); }
+    form { margin-top: 3rem; display: grid; gap: 1rem; }
+    form input, form textarea {
+      padding: 0.8rem; border-radius: 6px; border: 1px solid #374151; background: #0d1117; color: #fff;
+      font-family: inherit;
+    }
+    form button {
+      padding: 0.8rem; border: none; border-radius: 6px; background: var(--primary-color);
+      color: #fff; font-weight: 600; cursor: pointer; transition: background 0.3s;
+    }
+    form button:hover { background: #00aacc; }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: linear-gradient(90deg, #0088aa, var(--primary-color));
+      color: #fff; text-align: center; padding: 3rem 2rem; border-radius: 10px;
+      margin: 4rem auto; max-width: 1000px;
+    }
+    .cta-banner h2 { margin: 0 0 1rem; }
+    .cta-banner a {
+      display: inline-block; padding: 0.8rem 2rem; margin-top: 1rem; background: #0d1117;
+      color: #fff; font-weight: 600; border-radius: 6px; transition: background 0.3s;
+    }
+    .cta-banner a:hover { background: #111827; }
+
+    /* Footer */
+    footer { text-align: center; padding: 2rem; border-top: 1px solid #2d3748; font-size: 0.9rem; color: #6b7280; background: #111827; }
+
+    /* Responsive tweaks */
+    @media(max-width:768px){
+      header h2 { font-size: 2.25rem; }
+      nav { padding: 1rem 2rem; }
+      section { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h1>AJM Digital</h1>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header id="home">
+    <h2>Empowering Businesses with Technology</h2>
+    <p>At AJM Digital, we deliver IT support, web development, cloud services, and cybersecurity solutions tailored to your business goals.</p>
+    <a href="#services" class="cta">Explore Services</a>
+  </header>
+
+  <!-- Services -->
+  <section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services">
+      <div class="card">
+        <h3>IT Support & Consultancy</h3>
+        <p>Keeping your systems online and your team productive with proactive IT management.</p>
+        <ul>
+          <li>24/7 monitoring & remote support</li>
+          <li>On-site troubleshooting & maintenance</li>
+          <li>Network setup, optimization, & monitoring</li>
+          <li>Hardware & software upgrades</li>
+          <li>IT strategy & consultancy</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Web Development</h3>
+        <p>Custom-built websites and applications that are fast, secure, and responsive across all devices.</p>
+        <ul>
+          <li>Responsive business websites</li>
+          <li>eCommerce platforms with payment integration</li>
+          <li>Custom web applications & dashboards</li>
+          <li>SEO & performance optimization</li>
+          <li>Maintenance & ongoing support</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Cloud Solutions</h3>
+        <p>Secure, scalable, and cost-effective cloud services to power your modern business operations.</p>
+        <ul>
+          <li>Microsoft 365 & Google Workspace setup</li>
+          <li>Data migration, backup & recovery solutions</li>
+          <li>Cloud security & compliance</li>
+          <li>Virtual servers & scalable hosting solutions</li>
+          <li>Collaboration & productivity tools</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Cybersecurity</h3>
+        <p>Protecting your business from evolving digital threats with robust, proactive strategies.</p>
+        <ul>
+          <li>Penetration testing & vulnerability scanning</li>
+          <li>Firewall & endpoint protection</li>
+          <li>Ransomware defense & incident response</li>
+          <li>Security audits & compliance checks</li>
+          <li>User training & awareness programs</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Digital Transformation</h3>
+        <p>Helping you innovate, optimize processes, and stay competitive with modern technology strategies.</p>
+        <ul>
+          <li>Process automation & workflow optimization</li>
+          <li>Technology roadmaps & IT planning</li>
+          <li>Business intelligence & reporting dashboards</li>
+          <li>AI & machine learning integration</li>
+          <li>Change management support</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Software Development</h3>
+        <p>Custom software solutions to meet your unique business challenges.</p>
+        <ul>
+          <li>Web & mobile applications</li>
+          <li>API development & integration</li>
+          <li>Enterprise software solutions</li>
+          <li>Database design & optimization</li>
+          <li>Maintenance & version updates</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>IT Infrastructure</h3>
+        <p>Designing and managing the backbone of your business technology environment.</p>
+        <ul>
+          <li>Server setup & management</li>
+          <li>Network design & optimization</li>
+          <li>Virtualization & storage solutions</li>
+          <li>Disaster recovery planning</li>
+          <li>Scalable infrastructure solutions for growth</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Training & Support</h3>
+        <p>Empowering your team with knowledge to get the most out of your technology investments.</p>
+        <ul>
+          <li>Onboarding & user training programs</li>
+          <li>Workshops & webinars</li>
+          <li>Documentation & guides</li>
+          <li>Ongoing IT support & consultation</li>
+          <li>Security & best practices training</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2 class="section-title">About Us</h2>
+    <div class="about">
+      <p>
+        AJM Digital isn’t just another IT company – we’re your dedicated partner in navigating the digital world.  
+        With years of experience across industries, we deliver solutions that are practical, secure, and designed to grow with your business.
+      </p>
+      <h3>Our Mission</h3>
+      <p>To simplify technology, unlock new opportunities, and give businesses the confidence to embrace digital transformation without limits.</p>
+      <h3>Our Values</h3>
+      <p><strong>Innovation:</strong> Staying ahead of trends to keep you competitive.<br>
+         <strong>Reliability:</strong> Round-the-clock support you can depend on.<br>
+         <strong>Security:</strong> Protecting your business and data at every level.<br>
+         <strong>Partnership:</strong> We succeed when you succeed.</p>
+      <h3>Why Choose Us?</h3>
+      <p>From IT infrastructure to web and cloud solutions, AJM Digital offers end-to-end services. Whether you’re a startup, SME, or enterprise, our tailored strategies ensure technology works for you, not against you.</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact">
+      <p>Let’s discuss how we can help take your business to the next level.</p>
+      <div class="contact-info">
+        <div class="contact-card">
+          <h3>Email</h3>
+          <p><a href="mailto:ajmdigitaluk@gmail.com">ajmdigitaluk@gmail.com</a></p>
+        </div>
+        <div class="contact-card">
+          <h3>Location</h3>
+          <p>Based in the UK</p>
+        </div>
+      </div>
+
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <div class="cta-banner">
+    <h2>Ready to take your business digital?</h2>
+    <p>Partner with AJM Digital and unlock your future with smarter IT solutions.</p>
+    <a href="#contact">Get Started</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 AJM Digital. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
